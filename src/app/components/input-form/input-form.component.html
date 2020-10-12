@@ -6,11 +6,10 @@
         <div class="new-customer-data"
              ngModelGroup="newCustomerData"
              #newCustomerData="ngModelGroup">
-          <div class="col-lg-4">
-            <div class="input-group input-group-lg">
-              <div class="input-group-prepend">
-                <span class="input-group-text">Keresztnév</span>
-              </div>
+
+          <div class="form-group form-row">
+            <label for="new-customer-name" class="col-sm-3">Keresztnév</label>
+            <div class="col-sm-9">
               <input type="text"
                      id="new-customer-name"
                      name="name"
@@ -20,11 +19,10 @@
                      ngModel>
             </div>
           </div>
-          <div class="col-lg-4">
-            <div class="input-group input-group-lg">
-              <div class="input-group-prepend">
-                <span class="input-group-text">Életkor</span>
-              </div>
+
+          <div class="form-group form-row">
+            <label for="new-customer-age" class="col-sm-3">Életkor</label>
+            <div class="col-sm-9">
               <input type="number"
                      id="new-customer-age"
                      name="age"
@@ -34,20 +32,17 @@
                      ngModel>
             </div>
           </div>
-          <div class="col-lg-4">
-            <div class="input-group input-group-lg">
-              <div class="input-group-prepend">
-                <span class="input-group-text">Nem</span>
-              </div>
-              <input type="text"
-                     id="new-customer-sex"
-                     name="sex"
-                     aria-label="sex"
-                     class="form-control form-control-lg"
-                     placeholder="Férfi"
-                     ngModel>
+
+          <div class="form-group form-row">
+            <div class="custom-control custom-switch">
+              <label>
+                <fa-icon [icon]="faMars"></fa-icon>
+                <input type="checkbox" class="custom-control-input" id="customSwitches">
+                <fa-icon [icon]="faVenus"></fa-icon>
+              </label>
             </div>
           </div>
+
         </div>
         <button class="btn btn-lg btn-primary"
                 type="submit">Befejezés
