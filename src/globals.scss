@@ -1,6 +1,7 @@
 /* Pre-defined colors and units */
 
 $primary: #1BABF9;
+$secondary: #F91BAB;
 $black: #282828;
 $grid-gutter-width: 1.75rem;
 
@@ -12,3 +13,6 @@ $grid-gutter-width: 1.75rem;
   color: $primary;
 }
 
+.btn-secondary {
+  background-color: $secondary;
+}
