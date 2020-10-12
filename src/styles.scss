@@ -2,3 +2,15 @@
 
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';
+
+
+$primary: #1BABF9;
+$black: #282828;
+
+h1 h2 h3 h4 h5 h6 {
+  font-family: Montserrat, serif;
+}
+
+body {
+  font-family: Roboto, serif;
+}
