@@ -14,18 +14,12 @@ export class InputFormComponent implements OnInit {
   faMars = faMars;
   faVenus = faVenus;
 
+  customerData: Customer;
   submitted = false;
   reset = false;
 
-  customerData: Customer = {
-    name: '',
-    age: 0,
-    sex: false,
-    height: 0,
-    weight: 0
-  };
-
   constructor() {
+    this.customerData = new Customer();
   }
 
   ngOnInit(): void {
