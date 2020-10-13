@@ -1,7 +1,9 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {faMars, faVenus} from '@fortawesome/free-solid-svg-icons';
 import {Customer} from '../../models/customer';
+import {FormDataService} from '../../services/form-data.service';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-input-form',
@@ -18,8 +20,11 @@ export class InputFormComponent implements OnInit {
   submitted = false;
   reset = false;
 
-  constructor() {
-    this.customerData = new Customer();
+  constructor(
+    private formDataService: FormDataService,
+    private modalService: NgbModal
+  ) {
+    this.customerData = formDataService.customerDetails;
   }
 
   ngOnInit(): void {
