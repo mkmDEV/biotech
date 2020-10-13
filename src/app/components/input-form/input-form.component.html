@@ -6,94 +6,98 @@
         <div class="new-customer-data"
              ngModelGroup="newCustomerData"
         >
+          <div id="first-page" *ngIf="isFirstPage">
+            <div class="input-group input-group-lg mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text inputGroup-sizing-lg" id="customer-name-label">Keresztnév</span>
+              </div>
+              <input type="text"
+                     id="new-customer-name"
+                     class="form-control"
+                     name="name"
+                     aria-label="given-name"
+                     aria-describedby="customer-name-label"
+                     placeholder="Keresztnév"
+                     [(ngModel)]="customerData.name"
+              />
+            </div>
 
-          <div class="input-group input-group-lg mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text inputGroup-sizing-lg" id="customer-name-label">Keresztnév</span>
+            <div class="input-group input-group-lg mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text inputGroup-sizing-lg" id="customer-age-label">Életkor</span>
+              </div>
+              <input type="number"
+                     id="new-customer-age"
+                     class="form-control form-control-lg"
+                     name="age"
+                     aria-label="age"
+                     aria-describedby="customer-age-label"
+                     placeholder="0"
+                     [(ngModel)]="customerData.age"
+              />
+              <div class="input-group-append">
+                <span class="input-group-text">év</span>
+              </div>
             </div>
-            <input type="text"
-                   id="new-customer-name"
-                   class="form-control"
-                   name="name"
-                   aria-label="given-name"
-                   aria-describedby="customer-name-label"
-                   placeholder="Keresztnév"
-                   [(ngModel)]="customerData.name"
-            />
-          </div>
 
-          <div class="input-group input-group-lg mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text inputGroup-sizing-lg" id="customer-age-label">Életkor</span>
+            <div class="form-group form-row">
+              <div class="custom-control custom-switch">
+                <label>
+                  <fa-icon [icon]="faMars"></fa-icon>
+                  <input type="checkbox" class="custom-control-input" id="customSwitches">
+                  <fa-icon [icon]="faVenus"></fa-icon>
+                </label>
+              </div>
             </div>
-            <input type="number"
-                   id="new-customer-age"
-                   class="form-control form-control-lg"
-                   name="age"
-                   aria-label="age"
-                   aria-describedby="customer-age-label"
-                   placeholder="0"
-                   [(ngModel)]="customerData.age"
-            />
-            <div class="input-group-append">
-              <span class="input-group-text">év</span>
-            </div>
-          </div>
+          </div> <!-- end of first page -->
 
-          <div class="form-group form-row">
-            <div class="custom-control custom-switch">
-              <label>
-                <fa-icon [icon]="faMars"></fa-icon>
-                <input type="checkbox" class="custom-control-input" id="customSwitches">
-                <fa-icon [icon]="faVenus"></fa-icon>
-              </label>
+          <div id="second-page" *ngIf="!isFirstPage">
+            <div class="input-group input-group-lg mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text inputGroup-sizing-lg" id="customer-weight-label">Testtömeg</span>
+              </div>
+              <input type="number"
+                     id="new-customer-weight"
+                     class="form-control form-control-lg"
+                     name="weight"
+                     aria-label="weight"
+                     aria-describedby="customer-weight-label"
+                     placeholder="0"
+                     min="0"
+                     max="999"
+                     step="1"
+                     ngModel>
+              <div class="input-group-append">
+                <span class="input-group-text">kg</span>
+              </div>
             </div>
-          </div>
 
-          <div class="input-group input-group-lg mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text inputGroup-sizing-lg" id="customer-weight-label">Testtömeg</span>
-            </div>
-            <input type="number"
-                   id="new-customer-weight"
-                   class="form-control form-control-lg"
-                   name="weight"
-                   aria-label="weight"
-                   aria-describedby="customer-weight-label"
-                   placeholder="0"
-                   min="0"
-                   max="999"
-                   step="1"
-                   ngModel>
-            <div class="input-group-append">
-              <span class="input-group-text">kg</span>
-            </div>
-          </div>
-
-          <div class="input-group input-group-lg mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text inputGroup-sizing-lg" id="customer-height-label">Testmagasság</span>
-            </div>
-            <input type="number"
-                   id="new-customer-height"
-                   class="form-control form-control-lg"
-                   name="height"
-                   aria-label="height"
-                   aria-describedby="customer-height-label"
-                   placeholder="0"
-                   min="0"
-                   max="3"
-                   step="0.01"
-                   ngModel>
-            <div class="input-group-append">
-              <span class="input-group-text">m</span>
+            <div class="input-group input-group-lg mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text inputGroup-sizing-lg" id="customer-height-label">Testmagasság</span>
+              </div>
+              <input type="number"
+                     id="new-customer-height"
+                     class="form-control form-control-lg"
+                     name="height"
+                     aria-label="height"
+                     aria-describedby="customer-height-label"
+                     placeholder="0"
+                     min="0"
+                     max="3"
+                     step="0.01"
+                     ngModel>
+              <div class="input-group-append">
+                <span class="input-group-text">m</span>
+              </div>
             </div>
           </div>
 
         </div>
         <div class="btn-group" role="group">
           <button (click)="openModal(content)" class="btn btn-lg btn-danger ml-1">Törlés</button>
-          <button class="btn btn-lg btn-success ml-1">Befejezés</button>
+          <button class="btn btn-lg btn-success ml-1" (click)="togglePage()" *ngIf="isFirstPage">Tovább</button>
+          <button class="btn btn-lg btn-success ml-1" (click)="togglePage()" *ngIf="!isFirstPage">Vissza</button>
           <button class="btn btn-lg btn-primary ml-1">Befejezés</button>
         </div>
       </form>

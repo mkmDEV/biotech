@@ -17,6 +17,7 @@ export class InputFormComponent implements OnInit {
   faVenus = faVenus;
 
   customerData: Customer;
+  isFirstPage = true;
   submitted = false;
   reset = false;
 
@@ -29,6 +30,10 @@ export class InputFormComponent implements OnInit {
 
   ngOnInit(): void {
 
+  }
+
+  togglePage(): void {
+    this.isFirstPage = !this.isFirstPage;
   }
 
   onSubmit(f: NgForm): void {
