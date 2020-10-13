@@ -8,12 +8,14 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {HomeComponent} from './components/home/home.component';
 import {InputFormComponent} from './components/input-form/input-form.component';
 import {FormsModule} from '@angular/forms';
+import {SplashScreenComponent} from './components/splash-screen/splash-screen.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    InputFormComponent
+    InputFormComponent,
+    SplashScreenComponent
   ],
   imports: [
     BrowserModule,
