@@ -7,29 +7,34 @@
              ngModelGroup="newCustomerData"
              #newCustomerData="ngModelGroup">
 
-          <div class="form-group form-row">
-            <label for="new-customer-name" class="col-sm-3">Keresztnév</label>
-            <div class="col-sm-9">
-              <input type="text"
-                     id="new-customer-name"
-                     name="name"
-                     aria-label="given-name"
-                     class="form-control form-control-lg"
-                     placeholder="Keresztnév"
-                     ngModel>
+          <div class="input-group input-group-lg mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text inputGroup-sizing-lg" id="customer-name-label">Keresztnév</span>
             </div>
+            <input type="text"
+                   id="new-customer-name"
+                   class="form-control"
+                   name="name"
+                   aria-label="given-name"
+                   aria-describedby="customer-name-label"
+                   placeholder="Keresztnév"
+                   ngModel>
           </div>
 
-          <div class="form-group form-row">
-            <label for="new-customer-age" class="col-sm-3">Életkor</label>
-            <div class="col-sm-9">
-              <input type="number"
-                     id="new-customer-age"
-                     name="age"
-                     aria-label="age"
-                     class="form-control form-control-lg"
-                     placeholder="1"
-                     ngModel>
+          <div class="input-group input-group-lg mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text inputGroup-sizing-lg" id="customer-age-label">Életkor</span>
+            </div>
+            <input type="number"
+                   id="new-customer-age"
+                   class="form-control form-control-lg"
+                   name="age"
+                   aria-label="age"
+                   aria-describedby="customer-age-label"
+                   placeholder="0"
+                   ngModel>
+            <div class="input-group-append">
+              <span class="input-group-text">év</span>
             </div>
           </div>
 
@@ -40,6 +45,46 @@
                 <input type="checkbox" class="custom-control-input" id="customSwitches">
                 <fa-icon [icon]="faVenus"></fa-icon>
               </label>
+            </div>
+          </div>
+
+          <div class="input-group input-group-lg mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text inputGroup-sizing-lg" id="customer-weight-label">Testtömeg</span>
+            </div>
+            <input type="number"
+                   id="new-customer-weight"
+                   class="form-control form-control-lg"
+                   name="weight"
+                   aria-label="weight"
+                   aria-describedby="customer-weight-label"
+                   placeholder="0"
+                   min="0"
+                   max="999"
+                   step="1"
+                   ngModel>
+            <div class="input-group-append">
+              <span class="input-group-text">kg</span>
+            </div>
+          </div>
+
+          <div class="input-group input-group-lg mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text inputGroup-sizing-lg" id="customer-height-label">Testmagasság</span>
+            </div>
+            <input type="number"
+                   id="new-customer-height"
+                   class="form-control form-control-lg"
+                   name="height"
+                   aria-label="height"
+                   aria-describedby="customer-height-label"
+                   placeholder="0"
+                   min="0"
+                   max="3"
+                   step="0.01"
+                   ngModel>
+            <div class="input-group-append">
+              <span class="input-group-text">m</span>
             </div>
           </div>
 
