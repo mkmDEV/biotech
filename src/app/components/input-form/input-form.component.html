@@ -48,6 +48,10 @@
                 type="submit">Befejezés
         </button>
       </form>
+      <h3 class="h3" *ngIf="submitted">
+        A te neved {{ customerData.name }}, {{ customerData.age }} éves vagy és {{ customerData.sex }}.
+        A testsúlyod {{ customerData.weight }} kg és {{ customerData.height }} méter magas vagy.
+      </h3>
     </div>
   </div>
 </div>
