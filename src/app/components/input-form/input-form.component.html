@@ -1,11 +1,11 @@
 <div class="container container-fluid">
   <h2 class="h2">Kérjük, töltse ki az alábbi mezőket!</h2>
   <div class="row justify-content-center">
-    <div class="col-xl">
+    <div class="col-xl vw-100">
       <form (ngSubmit)="onSubmit(f)" #f=ngForm>
         <div class="new-customer-data"
              ngModelGroup="newCustomerData"
-             #newCustomerData="ngModelGroup">
+        >
 
           <div class="input-group input-group-lg mb-3">
             <div class="input-group-prepend">
@@ -18,7 +18,8 @@
                    aria-label="given-name"
                    aria-describedby="customer-name-label"
                    placeholder="Keresztnév"
-                   ngModel>
+                   [(ngModel)]="customerData.name"
+            />
           </div>
 
           <div class="input-group input-group-lg mb-3">
@@ -32,7 +33,8 @@
                    aria-label="age"
                    aria-describedby="customer-age-label"
                    placeholder="0"
-                   ngModel>
+                   [(ngModel)]="customerData.age"
+            />
             <div class="input-group-append">
               <span class="input-group-text">év</span>
             </div>
@@ -89,14 +91,27 @@
           </div>
 
         </div>
-        <button class="btn btn-lg btn-primary"
-                type="submit">Befejezés
-        </button>
+        <div class="btn-group" role="group">
+          <button (click)="openModal(content)" class="btn btn-lg btn-danger ml-1">Törlés</button>
+          <button class="btn btn-lg btn-success ml-1">Befejezés</button>
+          <button class="btn btn-lg btn-primary ml-1">Befejezés</button>
+        </div>
       </form>
-      <h3 class="h3" *ngIf="submitted">
+      <h3 class="h3" *ngIf="submitted && !reset">
         A te neved {{ customerData.name }}, {{ customerData.age }} éves vagy és {{ customerData.sex }}.
         A testsúlyod {{ customerData.weight }} kg és {{ customerData.height }} méter magas vagy.
       </h3>
     </div>
   </div>
 </div>
+
+<ng-template #content>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Biztosan törölni akarja az adatokat?</h4>
+  </div>
+  <div class="modal-body">
+    <button type="button" class="close" aria-label="Close">
+      <span aria-hidden="true" (click)="onDelete(f)">Igen</span>
+    </button>
+  </div>
+</ng-template>

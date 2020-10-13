@@ -40,4 +40,14 @@ export class InputFormComponent implements OnInit {
     this.customerData.weight = this.newCustomerForm.value.newCustomerData.weight;
     console.log(this.customerData);
   }
+
+  openModal(content: TemplateRef<any>): void {
+    this.modalService.open(content);
+  }
+
+  onDelete(f: NgForm): void {
+    // fixme: reset the whole form and set reset state to true + close dialog
+    this.reset = true;
+    f.reset();
+  }
 }
