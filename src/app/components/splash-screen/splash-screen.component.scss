@@ -35,7 +35,9 @@
 
 .app-logo {
   max-width: 100%;
-  background: url("~src/assets/lighty.svg") no-repeat center;
+  background: url("~src/assets/biotech.png") no-repeat center;
+  filter: invert(100%);
+  -webkit-filter: invert(100%);
   background-size: contain;
   width: 100px;
   height: 100px;
