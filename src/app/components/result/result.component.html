@@ -1,1 +1,25 @@
-<p>result works!</p>
+<div class="d-flex align-items-center flex-column justify-content-center container container-fluid mt-5">
+  <h2 class="h2">Eredmény</h2>
+  <div class="row text-center">
+    <div class="col-xl vw-100">
+      <div class="row mt-5">
+        <div class="col">
+          <p class="text-body">A Te BMI értéked</p>
+        </div>
+        <div class="col">
+          <p class="text-body" [ngClass]="(gender)?'text-primary':'text-secondary'">{{ bmiNumber }}</p>
+        </div>
+        <div class="col">
+          <p class="text-body">ami alapján a(z)</p>
+        </div>
+        <div class="col">
+          <p class="text-body">{{ bmiGroup }}</p>
+        </div>
+      </div>
+      <div class="btn-group mt-5" role="group">
+        <button (click)="goHome()" class="btn btn-primary">Kitöltöm újra</button>
+        <button (click)="goBack()" class="btn btn-primary">Módosítom az előzőt</button>
+      </div>
+    </div>
+  </div>
+</div>
