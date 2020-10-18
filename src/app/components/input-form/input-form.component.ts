@@ -50,9 +50,13 @@ export class InputFormComponent implements OnInit {
     this.modalService.open(content);
   }
 
-  onDelete(f: NgForm): void {
-    // fixme: reset the whole form and set reset state to true + close dialog
+  onReset(f: NgForm): void {
     this.reset = true;
     f.reset();
+    this.modalService.dismissAll('Cross click');
+  }
+
+  onClose(): void {
+    this.modalService.dismissAll('Cross click');
   }
 }

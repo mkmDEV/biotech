@@ -114,8 +114,14 @@
     <h4 class="modal-title" id="modal-basic-title">Biztosan törölni akarja az adatokat?</h4>
   </div>
   <div class="modal-body">
-    <button type="button" class="close" aria-label="Close">
-      <span aria-hidden="true" (click)="onDelete(f)">Igen</span>
+    <p>A törlés végleges, nem visszavonható!</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-secondary" aria-label="Close" (click)="onClose()">
+      <span aria-hidden="true">Nem</span>
+    </button>
+    <button type="button" class="btn btn-outline-primary" aria-label="Close" (click)="onReset(f)">
+      <span aria-hidden="true">Igen</span>
     </button>
   </div>
 </ng-template>
