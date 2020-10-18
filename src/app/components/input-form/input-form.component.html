@@ -6,105 +6,15 @@
         <div class="new-customer-data"
              ngModelGroup="newCustomerData"
         >
-          <!--          <div id="first-page" *ngIf="isFirstPage">-->
-          <div class="input-group input-group-lg mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text inputGroup-sizing-lg" id="customer-name-label">Keresztnév</span>
-            </div>
-            <input type="text"
-                   id="new-customer-name"
-                   class="form-control"
-                   name="name"
-                   aria-label="given-name"
-                   aria-describedby="customer-name-label"
-                   placeholder="Keresztnév"
-                   ngModel
-            />
-          </div>
-
-          <div class="input-group input-group-lg mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text inputGroup-sizing-lg" id="customer-age-label">Életkor</span>
-            </div>
-            <input type="number"
-                   id="new-customer-age"
-                   class="form-control form-control-lg"
-                   name="age"
-                   aria-label="age"
-                   aria-describedby="customer-age-label"
-                   placeholder="0"
-                   ngModel
-            />
-            <div class="input-group-append">
-              <span class="input-group-text">év</span>
-            </div>
-          </div>
-
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text inputGroup-sizing-lg">Nem</span>
-            </div>
-            <div class="btn-group btn-group-toggle">
-              <label class="btn-primary" ngbButtonLabel>
-                <input type="checkbox" [ngModel] name="gender" value="true" ngbButton >
-                <fa-icon [icon]="faMars" size="2x"></fa-icon>
-              </label>
-              <label class="btn-secondary" ngbButtonLabel>
-                <input type="checkbox" [ngModel] name="gender" value="false" ngbButton >
-                <fa-icon [icon]="faVenus" size="2x"></fa-icon>
-              </label>
-            </div>
-          </div>
-          <!--          </div> &lt;!&ndash; end of first page &ndash;&gt;-->
-
-          <!--          <div id="second-page" *ngIf="!isFirstPage">-->
-          <div class="input-group input-group-lg mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text inputGroup-sizing-lg" id="customer-weight-label">Testtömeg</span>
-            </div>
-            <input type="number"
-                   id="new-customer-weight"
-                   class="form-control form-control-lg"
-                   name="weight"
-                   aria-label="weight"
-                   aria-describedby="customer-weight-label"
-                   placeholder="0"
-                   min="0"
-                   max="999"
-                   step="1"
-                   ngModel>
-            <div class="input-group-append">
-              <span class="input-group-text">kg</span>
-            </div>
-          </div>
-
-          <div class="input-group input-group-lg mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text inputGroup-sizing-lg" id="customer-height-label">Testmagasság</span>
-            </div>
-            <input type="number"
-                   id="new-customer-height"
-                   class="form-control form-control-lg"
-                   name="height"
-                   aria-label="height"
-                   aria-describedby="customer-height-label"
-                   placeholder="0"
-                   min="0"
-                   max="3"
-                   step="0.01"
-                   ngModel>
-            <div class="input-group-append">
-              <span class="input-group-text">m</span>
-            </div>
-          </div>
-          <!--          </div>-->
+          <app-first-page *ngIf="isFirstPage"></app-first-page>
+          <app-second-page *ngIf="!isFirstPage"></app-second-page>
 
         </div>
         <div class="btn-group" role="group">
           <button (click)="openModal(content)" class="btn btn-lg btn-danger">Törlés</button>
           <button (click)="togglePage()" *ngIf="isFirstPage" class="btn btn-lg btn-success">Tovább</button>
           <button (click)="togglePage()" *ngIf="!isFirstPage" class="btn btn-lg btn-success">Vissza</button>
-          <button class="btn btn-primary" (click)="onSubmit(form)"> {{ 'Befejezés' | uppercase }}</button>
+          <button (click)="onSubmit(form)" *ngIf="!isFirstPage" class="btn btn-primary"> {{ 'Befejezés' | uppercase }}</button>
         </div>
       </form>
       <h3 class="h3" *ngIf="submitted && !reset">

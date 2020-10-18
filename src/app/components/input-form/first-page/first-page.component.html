@@ -1,1 +1,48 @@
-<p>first-page works!</p>
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text inputGroup-sizing-lg" id="customer-name-label">Keresztnév</span>
+  </div>
+  <input type="text"
+         id="new-customer-name"
+         class="form-control"
+         name="name"
+         aria-label="given-name"
+         aria-describedby="customer-name-label"
+         placeholder="Keresztnév"
+         ngModel
+  />
+</div>
+
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text inputGroup-sizing-lg" id="customer-age-label">Életkor</span>
+  </div>
+  <input type="number"
+         id="new-customer-age"
+         class="form-control form-control-lg"
+         name="age"
+         aria-label="age"
+         aria-describedby="customer-age-label"
+         placeholder="0"
+         ngModel
+  />
+  <div class="input-group-append">
+    <span class="input-group-text">év</span>
+  </div>
+</div>
+
+<!--          <div class="input-group mb-3">-->
+<!--            <div class="input-group-prepend">-->
+<!--              <span class="input-group-text inputGroup-sizing-lg">Nem</span>-->
+<!--            </div>-->
+<!--            <div class="btn-group btn-group-toggle">-->
+<!--              <label class="btn-primary" ngbButtonLabel>-->
+<!--                <input type="radio" [ngModel] name="gender" value="true" ngbButton >-->
+<!--                <fa-icon [icon]="faMars" size="2x"></fa-icon>-->
+<!--              </label>-->
+<!--              <label class="btn-secondary" ngbButtonLabel>-->
+<!--                <input type="radio" [ngModel] name="gender" value="false" ngbButton >-->
+<!--                <fa-icon [icon]="faVenus" size="2x"></fa-icon>-->
+<!--              </label>-->
+<!--            </div>-->
+<!--          </div>-->
