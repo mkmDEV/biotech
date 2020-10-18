@@ -2,7 +2,7 @@ import {Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {faMars, faVenus} from '@fortawesome/free-solid-svg-icons';
 import {Customer} from '../../models/customer';
-import {FormDataService} from '../../services/form-data.service';
+import {CustomerService} from '../../services/customer.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -11,21 +11,20 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./input-form.component.scss']
 })
 export class InputFormComponent implements OnInit {
-  @ViewChild('f') newCustomerForm: NgForm;
+  @ViewChild('form') newCustomerForm: NgForm;
 
   faMars = faMars;
   faVenus = faVenus;
 
-  customerData: Customer;
+  customer = new Customer();
   isFirstPage = true;
   submitted = false;
   reset = false;
 
   constructor(
-    private formDataService: FormDataService,
+    private customerService: CustomerService,
     private modalService: NgbModal
   ) {
-    this.customerData = formDataService.customerDetails;
   }
 
   ngOnInit(): void {
@@ -36,23 +35,23 @@ export class InputFormComponent implements OnInit {
     this.isFirstPage = !this.isFirstPage;
   }
 
-  onSubmit(f: NgForm): void {
+  onSubmit(form: NgForm): void {
     this.submitted = true;
-    this.customerData.name = this.newCustomerForm.value.newCustomerData.name;
-    this.customerData.sex = this.newCustomerForm.value.newCustomerData.sex;
-    this.customerData.age = this.newCustomerForm.value.newCustomerData.age;
-    this.customerData.height = this.newCustomerForm.value.newCustomerData.height;
-    this.customerData.weight = this.newCustomerForm.value.newCustomerData.weight;
-    console.log(this.customerData);
+    this.customer.name = form.controls.name.value;
+    this.customer.gender = form.controls.gender.value;
+    this.customer.age = form.controls.age.value;
+    this.customer.height = form.controls.height.value;
+    this.customer.weight = form.controls.weight.value;
+    console.log(this.customer);
   }
 
   openModal(content: TemplateRef<any>): void {
     this.modalService.open(content);
   }
 
-  onReset(f: NgForm): void {
+  onReset(form: NgForm): void {
     this.reset = true;
-    f.reset();
+    form.reset();
     this.modalService.dismissAll('Cross click');
   }
 
