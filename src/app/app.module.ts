@@ -12,6 +12,7 @@ import {SplashScreenComponent} from './components/splash-screen/splash-screen.co
 import {FirstPageComponent} from './components/input-form/first-page/first-page.component';
 import {SecondPageComponent} from './components/input-form/second-page/second-page.component';
 import {ResultComponent} from './components/result/result.component';
+import {LoadingComponent} from './components/loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import {ResultComponent} from './components/result/result.component';
     InputFormComponent,
     SecondPageComponent,
     SplashScreenComponent,
-    ResultComponent
+    ResultComponent,
+    LoadingComponent
   ],
   imports: [
     AppRoutingModule,
