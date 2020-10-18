@@ -5,11 +5,13 @@ import {Customer} from '../models/customer';
   providedIn: 'root'
 })
 export class CustomerService {
-  createCustomer(customer: Customer) {
-    console.log(`name: ${customer.name}`);
-    console.log(`age: ${customer.age}`);
-    console.log(`gender: ${customer.gender}`);
-    console.log(`height: ${customer.height}`);
-    console.log(`weight: ${customer.weight}`);
+  customer: Customer;
+
+  saveCustomer(input: Customer): void {
+    this.customer = input;
+  }
+
+  getCustomer(): Customer {
+    return this.customer;
   }
 }

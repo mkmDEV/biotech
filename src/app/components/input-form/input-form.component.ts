@@ -13,10 +13,8 @@ import {Router} from '@angular/router';
 export class InputFormComponent implements OnInit {
   @ViewChild('form') newCustomerForm: NgForm;
 
-  faMars = faMars;
-  faVenus = faVenus;
-
   customer = new Customer();
+  savedCustomer: Customer;
   isFirstPage = true;
   submitted = false;
   reset = false;
@@ -29,7 +27,9 @@ export class InputFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    if (this.submitted) {
+      this.savedCustomer = this.customerService.getCustomer();
+    }
   }
 
   togglePage(): void {
@@ -37,13 +37,13 @@ export class InputFormComponent implements OnInit {
   }
 
   onSubmit(form: NgForm): void {
-    this.submitted = true;
     this.customer.name = form.value.newCustomerData.name;
     this.customer.gender = form.value.newCustomerData.gender;
     this.customer.age = form.value.newCustomerData.age;
     this.customer.height = form.value.newCustomerData.height;
     this.customer.weight = form.value.newCustomerData.weight;
-    console.log(this.customer);
+    this.customerService.saveCustomer(form.value.newCustomerData);
+    this.submitted = true;
   }
 
   openModal(content: TemplateRef<any>): void {
