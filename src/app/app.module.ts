@@ -9,22 +9,27 @@ import {HomeComponent} from './components/home/home.component';
 import {InputFormComponent} from './components/input-form/input-form.component';
 import {FormsModule} from '@angular/forms';
 import {SplashScreenComponent} from './components/splash-screen/splash-screen.component';
+import {FirstPageComponent} from './components/input-form/first-page/first-page.component';
+import {SecondPageComponent} from './components/input-form/second-page/second-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    FirstPageComponent,
     HomeComponent,
     InputFormComponent,
+    SecondPageComponent,
     SplashScreenComponent
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
-    NgbModule,
+    BrowserModule,
     FontAwesomeModule,
-    FormsModule
+    FormsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
