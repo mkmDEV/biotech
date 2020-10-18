@@ -101,10 +101,10 @@
 
         </div>
         <div class="btn-group" role="group">
-          <button (click)="openModal(content)" class="btn btn-lg btn-danger ml-1">Törlés</button>
-          <button (click)="togglePage()" *ngIf="isFirstPage" class="btn btn-lg btn-success ml-1">Tovább</button>
-          <button (click)="togglePage()" *ngIf="!isFirstPage" class="btn btn-lg btn-success ml-1">Vissza</button>
-          <button class="btn btn-lg btn-primary ml-1" (click)="onSubmit(form)">Befejezés</button>
+          <button (click)="openModal(content)" class="btn btn-lg btn-danger">Törlés</button>
+          <button (click)="togglePage()" *ngIf="isFirstPage" class="btn btn-lg btn-success">Tovább</button>
+          <button (click)="togglePage()" *ngIf="!isFirstPage" class="btn btn-lg btn-success">Vissza</button>
+          <button class="btn btn-primary" (click)="onSubmit(form)"> {{ 'Befejezés' | uppercase }}</button>
         </div>
       </form>
       <h3 class="h3" *ngIf="submitted && !reset">
@@ -123,10 +123,10 @@
     <p>A törlés végleges, nem visszavonható!</p>
   </div>
   <div class="modal-footer">
-    <button (click)="onClose()" aria-label="Close" class="btn btn-outline-secondary" type="button">
+    <button (click)="onClose()" aria-label="Close" class="btn" type="button">
       <span aria-hidden="true">Nem</span>
     </button>
-    <button (click)="onReset(form)" aria-label="Close" class="btn btn-outline-primary" type="button">
+    <button (click)="onReset(form)" aria-label="Close" class="btn" type="button">
       <span aria-hidden="true">Igen</span>
     </button>
   </div>
