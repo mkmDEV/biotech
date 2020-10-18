@@ -37,11 +37,11 @@ export class InputFormComponent implements OnInit {
 
   onSubmit(form: NgForm): void {
     this.submitted = true;
-    this.customer.name = form.controls.name.value;
-    this.customer.gender = form.controls.gender.value;
-    this.customer.age = form.controls.age.value;
-    this.customer.height = form.controls.height.value;
-    this.customer.weight = form.controls.weight.value;
+    this.customer.name = form.value.newCustomerData.name;
+    this.customer.gender = form.value.newCustomerData.gender;
+    this.customer.age = form.value.newCustomerData.age;
+    this.customer.height = form.value.newCustomerData.height;
+    this.customer.weight = form.value.newCustomerData.weight;
     console.log(this.customer);
   }
 
