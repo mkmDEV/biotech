@@ -1,9 +1,9 @@
 import {Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
 import {NgForm} from '@angular/forms';
-import {faMars, faVenus} from '@fortawesome/free-solid-svg-icons';
 import {Customer} from '../../models/customer';
 import {CustomerService} from '../../services/customer.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-input-form',
@@ -23,7 +23,8 @@ export class InputFormComponent implements OnInit {
 
   constructor(
     private customerService: CustomerService,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private router: Router
   ) {
   }
 

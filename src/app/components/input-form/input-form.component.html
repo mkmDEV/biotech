@@ -1,26 +1,25 @@
-<div class="container container-fluid">
+<div class="container container-fluid mt-5">
   <h2 class="h2">Kérjük, töltse ki az alábbi mezőket!</h2>
   <div class="row justify-content-center">
     <div class="col-xl vw-100">
       <form (ngSubmit)="onSubmit(form)" #form="ngForm">
-        <div class="new-customer-data"
+        <div class="new-customer-data mt-5"
              ngModelGroup="newCustomerData"
         >
           <app-first-page *ngIf="isFirstPage"></app-first-page>
           <app-second-page *ngIf="!isFirstPage"></app-second-page>
 
         </div>
-        <div class="btn-group" role="group">
-          <button (click)="openModal(content)" class="btn btn-lg btn-danger">Törlés</button>
-          <button (click)="togglePage()" *ngIf="isFirstPage" class="btn btn-lg btn-success">Tovább</button>
-          <button (click)="togglePage()" *ngIf="!isFirstPage" class="btn btn-lg btn-success">Vissza</button>
-          <button (click)="onSubmit(form)" *ngIf="!isFirstPage" class="btn btn-primary"> {{ 'Befejezés' | uppercase }}</button>
+        <div class="btn-group mt-5" role="group">
+          <button (click)="openModal(content)" class="btn btn-danger">Törlés</button>
+          <button (click)="togglePage()" class="btn btn-primary">{{ isFirstPage ? 'Tovább' : 'Vissza' }}</button>
+          <button (click)="onSubmit(form)" [routerLink]="'/result'" *ngIf="!isFirstPage" class="btn btn-success"> {{ 'Befejezés' }}</button>
         </div>
       </form>
-      <h3 class="h3" *ngIf="submitted && !reset">
+      <h5 class="h5 mt-5" *ngIf="submitted && !reset">
         A te neved {{ customer.name }}, {{ customer.age }} éves vagy és {{ customer.gender ? 'férfi' : 'nő' }}.
         A testsúlyod {{ customer.weight }} kg és {{ customer.height }} méter magas vagy.
-      </h3>
+      </h5>
     </div>
   </div>
 </div>

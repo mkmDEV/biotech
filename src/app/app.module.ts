@@ -11,6 +11,7 @@ import {FormsModule} from '@angular/forms';
 import {SplashScreenComponent} from './components/splash-screen/splash-screen.component';
 import {FirstPageComponent} from './components/input-form/first-page/first-page.component';
 import {SecondPageComponent} from './components/input-form/second-page/second-page.component';
+import {ResultComponent} from './components/result/result.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {SecondPageComponent} from './components/input-form/second-page/second-pa
     HomeComponent,
     InputFormComponent,
     SecondPageComponent,
-    SplashScreenComponent
+    SplashScreenComponent,
+    ResultComponent
   ],
   imports: [
     AppRoutingModule,
