@@ -1,8 +1,6 @@
-import {Component, OnInit, TemplateRef} from '@angular/core';
-import {NgForm} from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
 import {Customer} from '../../models/customer';
 import {CustomerService} from '../../services/customer.service';
-import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {Router} from '@angular/router';
 
 @Component({
@@ -17,7 +15,6 @@ export class InputFormComponent implements OnInit {
 
   constructor(
     private customerService: CustomerService,
-    private modalService: NgbModal,
     private router: Router
   ) {
   }
@@ -29,29 +26,15 @@ export class InputFormComponent implements OnInit {
       });
   }
 
-  togglePage(): void {
-    this.isFirstPage = !this.isFirstPage;
-  }
-
-  openModal(content: TemplateRef<any>): void {
-    this.modalService.open(content, {size: 'xl'});
-  }
-
-  onReset(form: NgForm): void {
-    this.reset = true;
-    form.reset();
-    this.modalService.dismissAll('Cross click');
-  }
-
-  onClose(): void {
-    this.modalService.dismissAll('Cross click');
-  }
-
   onReadyForNextPage(): void {
     this.isFirstPage = false;
   }
 
   onFinished(): void {
     this.router.navigate(['/loading']);
+  }
+
+  onGetBack(): void {
+    this.isFirstPage = true;
   }
 }

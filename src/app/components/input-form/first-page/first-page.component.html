@@ -1,23 +1,38 @@
 <form (ngSubmit)="onSubmit()" #form="ngForm">
   <div class="col custom-form-control">
     <input
-           aria-describedby="customer-name-label"
-           aria-label="given-name"
-           class="form-control"
-           name="name"
-           placeholder="Keresztnév*"
-           required
-           type="text"
-           [(ngModel)]="customer.name"
+      [(ngModel)]="customer.name"
+      aria-describedby="customer-name-label"
+      aria-label="given-name"
+      class="form-control"
+      name="name"
+      placeholder="Keresztnév*"
+      required
+      type="text"
+      #name
     />
   </div>
   <div class="col custom-form-control">
-    <ng5-slider name="age" [(ngModel)]="customer.age" [(value)]="customer.age" [options]="options"></ng5-slider>
+    <ng5-slider
+      name="age"
+      [(ngModel)]="customer.age"
+      [(value)]="customer.age"
+      [options]="options"
+      #age
+    ></ng5-slider>
   </div>
   <div class="col custom-form-control">
     <div class="form-check form-check-inline">
-      <input [(ngModel)]="customer.gender" class="form-check-input" type="radio" name="gender" id="male" [value]="true"
-      required>
+      <input
+        [(ngModel)]="customer.gender"
+        [value]="true"
+        class="form-check-input"
+        id="male"
+        name="gender"
+        required
+        type="radio"
+        #male
+      >
       <label class="form-check-label" for="male">
         <span class="text-primary">
           Férfi
@@ -26,7 +41,16 @@
       </label>
     </div>
     <div class="form-check form-check-inline">
-      <input [(ngModel)]="customer.gender" class="form-check-input" type="radio" name="gender" id="female" [value]="false" required>
+      <input
+        [(ngModel)]="customer.gender"
+        [value]="false"
+        class="form-check-input"
+        id="female"
+        name="gender"
+        required
+        type="radio"
+        #female
+      >
       <label class="form-check-label" for="female">
         <span class="text-secondary">
           Nő
@@ -35,8 +59,32 @@
     </div>
   </div>
   <div class="btn-group mt-5" role="group">
-
+    <button (click)="openModal(content)" type="button" class="btn btn-danger">Törlés</button>
     <button (click)="onSubmit()" type="button" class="btn btn-primary">Tovább</button>
   </div>
 </form>
+<div class="mt-5" *ngIf="!name.defaultValue && age.value && (male.checked || female.checked)">
+  <h5 class="h5 mb-2">
+    A te neved {{ customer.name }}, {{ customer.age }} éves vagy és {{ customer.gender ? 'férfi' : 'nő' }}.
+    A testsúlyod {{ customer.weight }} kg és {{ customer.height | number: '1.0-0'}} méter magas vagy.
+  </h5>
+  <p>Amennyiben szeretnéd megtudni a BMI értékedet, kattints a tovább gombra.</p>
+</div>
+
+<ng-template #content>
+  <div class="modal-header vw-100">
+    <h4 class="modal-title" id="modal-basic-title">Biztosan törölni akarja az adatokat?</h4>
+  </div>
+  <div class="modal-body">
+    <p>A törlés végleges, nem visszavonható!</p>
+  </div>
+  <div class="modal-footer">
+    <button (click)="onClose()" aria-label="Close" class="btn btn-danger" type="button">
+      <span aria-hidden="true">Nem</span>
+    </button>
+    <button (click)="onReset()" aria-label="Close" class="btn btn-success" type="button">
+      <span aria-hidden="true">Igen</span>
+    </button>
+  </div>
+</ng-template>
 
