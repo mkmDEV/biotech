@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {Location} from '@angular/common';
 import {Router} from '@angular/router';
 import {CustomerService} from '../../services/customer.service';
 import {Customer} from '../../models/customer';
@@ -25,7 +24,6 @@ export class ResultComponent implements OnInit {
   ];
 
   constructor(
-    private location: Location,
     private router: Router,
     private customerService: CustomerService
   ) {
@@ -43,12 +41,11 @@ export class ResultComponent implements OnInit {
   }
 
   goBack(): void {
-    // fixme tipp: session storage-ba menteni az inputokat és onnan feltölteni?
-    this.router.navigate();
+    this.router.navigate(['']);
   }
 
   goHome(): void {
-    // fixme tipp: activated route paramba reseted=true-val, és az ngOninitben resetelje a formot mindegyik aloldalon
+    this.customerService.saveCustomer(new Customer());
     this.router.navigateByUrl('');
   }
 
