@@ -1,17 +1,20 @@
 import {Injectable} from '@angular/core';
 import {Customer} from '../models/customer';
+import {BehaviorSubject, Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CustomerService {
-  customer: Customer;
+  private customerSubject = new BehaviorSubject(new Customer());
+  private customerObservable = this.customerSubject.asObservable();
 
-  saveCustomer(input: Customer): void {
-    this.customer = input;
+  saveCustomer(customer: Customer): void {
+    this.customerSubject.next(customer);
   }
 
-  getCustomer(): Customer {
-    return this.customer;
+
+  getCustomer(): Observable<Customer> {
+    return this.customerObservable;
   }
 }
