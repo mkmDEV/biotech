@@ -7,13 +7,16 @@
           <p class="text-body">A Te BMI értéked</p>
         </div>
         <div class="col">
-          <p [ngClass]="(customer.gender)?'text-primary':'text-secondary'">{{ bmiNumber }}</p>
+          <p [ngClass]="(customer.gender)?'text-primary':'text-secondary'">{{ bmiNumber | number: '1.2-2' }}</p>
         </div>
         <div class="col">
           <p class="text-body">ami alapján a(z)</p>
         </div>
         <div class="col">
           <p class="text-body">{{ bmiGroup }}</p>
+        </div>
+        <div class="col">
+          <p class="text-body">csoportba tartozol.</p>
         </div>
       </div>
       <div class="btn-group mt-5" role="group">

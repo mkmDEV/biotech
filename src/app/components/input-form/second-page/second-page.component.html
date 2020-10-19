@@ -1,6 +1,5 @@
 <form (ngSubmit)="onSubmit()" #form="ngForm">
   <div class="col custom-form-control">
-
     <div class="input-group mb-3">
       <div class="input-group-prepend">
         <span class="input-group-text inputGroup-sizing-lg" id="customer-weight-label">Testtömeg</span>
@@ -40,13 +39,20 @@
         <span class="input-group-text">cm</span>
       </div>
     </div>
-    <div class="btn-group mt-5" role="group">
-      <button (click)="openModal(content)" type="button" class="btn btn-danger">Törlés</button>
-      <button (click)="onGoBack()" type="button" class="btn btn-primary">Vissza</button>
-      <button (click)="onSubmit()" type="button" class="btn btn-success">Befejezés</button>
-    </div>
   </div>
 </form>
+<div class="btn-group mt-5">
+  <button (click)="openModal(content)" type="button" class="btn btn-danger">Törlés</button>
+  <button (click)="onGoBack()" type="button" class="btn btn-primary">Vissza</button>
+  <button (click)="onSubmit()" type="button" class="btn btn-success">Befejezés</button>
+</div>
+<div class="mt-5">
+  <h5 class="h5 mb-2">
+    A te neved {{ customer.name }}, {{ customer.age }} éves vagy és {{ customer.gender ? 'férfi' : 'nő' }}.
+    A testsúlyod {{ customer.weight }} kg és {{ (customer.height / 100) | number: '1.2-2'}} méter magas vagy.
+  </h5>
+  <p>Amennyiben szeretnéd megtudni a BMI értékedet, kattints a befejezés gombra.</p>
+</div>
 
 <ng-template #content>
   <div class="modal-header vw-100">
