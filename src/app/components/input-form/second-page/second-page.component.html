@@ -1,39 +1,45 @@
-<div class="input-group mb-3">
-  <div class="input-group-prepend">
-    <span class="input-group-text inputGroup-sizing-lg" id="customer-weight-label">Testtömeg</span>
-  </div>
-  <input type="number"
-         id="new-customer-weight"
-         class="form-control form-control-lg"
-         name="weight"
-         aria-label="weight"
-         aria-describedby="customer-weight-label"
-         placeholder="0"
-         min="0"
-         max="999"
-         step="1"
-         ngModel>
-  <div class="input-group-append">
-    <span class="input-group-text">kg</span>
-  </div>
-</div>
+<form (ngSubmit)="onSubmit()" #form="ngForm">
+  <div class="col custom-form-control">
 
-<div class="input-group mb-3">
-  <div class="input-group-prepend">
-    <span class="input-group-text inputGroup-sizing-lg" id="customer-height-label">Testmagasság</span>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text inputGroup-sizing-lg" id="customer-weight-label">Testtömeg</span>
+      </div>
+      <input type="number"
+             id="new-customer-weight"
+             class="form-control form-control-lg"
+             name="weight"
+             aria-label="weight"
+             aria-describedby="customer-weight-label"
+             placeholder="0"
+             min="0"
+             max="999"
+             step="1"
+             [(ngModel)]="customer.weight">
+      <div class="input-group-append">
+        <span class="input-group-text">kg</span>
+      </div>
+    </div>
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text inputGroup-sizing-lg" id="customer-height-label">Testmagasság</span>
+      </div>
+      <input type="number"
+             id="new-customer-height"
+             class="form-control form-control-lg"
+             name="height"
+             aria-label="height"
+             aria-describedby="customer-height-label"
+             placeholder="0"
+             min="0"
+             max="300"
+             step="1"
+             [(ngModel)]="customer.height">
+      <div class="input-group-append">
+        <span class="input-group-text">cm</span>
+      </div>
+    </div>
+    <button (click)="onSubmit()" type="button" class="btn btn-success">Befejezés</button>
   </div>
-  <input type="number"
-         id="new-customer-height"
-         class="form-control form-control-lg"
-         name="height"
-         aria-label="height"
-         aria-describedby="customer-height-label"
-         placeholder="0"
-         min="0"
-         max="300"
-         step="1"
-         ngModel>
-  <div class="input-group-append">
-    <span class="input-group-text">cm</span>
-  </div>
-</div>
+</form>

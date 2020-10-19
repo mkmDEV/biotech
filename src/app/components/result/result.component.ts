@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Location} from '@angular/common';
 import {Router} from '@angular/router';
 import {CustomerService} from '../../services/customer.service';
+import {Customer} from '../../models/customer';
 
 @Component({
   selector: 'app-result',
@@ -9,9 +10,7 @@ import {CustomerService} from '../../services/customer.service';
   styleUrls: ['./result.component.scss']
 })
 export class ResultComponent implements OnInit {
-  gender: boolean;
-  height: number;
-  weight: number;
+  customer: Customer;
   bmiNumber: number;
   bmiGroup: string;
   bmiGroups = [
@@ -33,17 +32,19 @@ export class ResultComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getData();
+    this.customerService.getCustomer().subscribe((customer: Customer) => {
+      this.customer = customer;
+    });
     this.getBmiGroup();
   }
 
   calculateBmi(): number {
-    return this.bmiNumber = this.weight / this.height ** 2;
+    return this.bmiNumber = this.customer.weight / this.customer.height ** 2;
   }
 
   goBack(): void {
     // fixme tipp: session storage-ba menteni az inputokat és onnan feltölteni?
-    this.router.navigateByUrl('');
+    this.router.navigate();
   }
 
   goHome(): void {
@@ -51,14 +52,7 @@ export class ResultComponent implements OnInit {
     this.router.navigateByUrl('');
   }
 
-  private getData(): void {
-    this.weight = this.customerService.getCustomer().weight;
-    this.height = this.customerService.getCustomer().height;
-    this.gender = this.customerService.getCustomer().genders;
-  }
-
   private getBmiGroup(): void {
-    // fixme
     this.calculateBmi();
     if (this.bmiNumber < 24.99) {
       if (this.bmiNumber < 18.49) {

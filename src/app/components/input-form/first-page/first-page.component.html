@@ -1,6 +1,6 @@
 <form (ngSubmit)="onSubmit()" #form="ngForm">
   <div class="col custom-form-control">
-    <input (blur)="onSubmit()"
+    <input
            aria-describedby="customer-name-label"
            aria-label="given-name"
            class="form-control"
@@ -12,11 +12,11 @@
     />
   </div>
   <div class="col custom-form-control">
-    <ng5-slider (blur)="onSubmit()" [(value)]="customer.age" [options]="options"></ng5-slider>
+    <ng5-slider name="age" [(ngModel)]="customer.age" [(value)]="customer.age" [options]="options"></ng5-slider>
   </div>
   <div class="col custom-form-control">
     <div class="form-check form-check-inline">
-      <input (blur)="onSubmit()" class="form-check-input" type="radio" name="gender" id="male" [value]="true"
+      <input [(ngModel)]="customer.gender" class="form-check-input" type="radio" name="gender" id="male" [value]="true"
       required>
       <label class="form-check-label" for="male">
         <span class="text-primary">
@@ -26,7 +26,7 @@
       </label>
     </div>
     <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="gender" id="female" [value]="false" required>
+      <input [(ngModel)]="customer.gender" class="form-check-input" type="radio" name="gender" id="female" [value]="false" required>
       <label class="form-check-label" for="female">
         <span class="text-secondary">
           Nő
@@ -34,4 +34,9 @@
       </label>
     </div>
   </div>
+  <div class="btn-group mt-5" role="group">
+
+    <button (click)="onSubmit()" type="button" class="btn btn-primary">Tovább</button>
+  </div>
 </form>
+
