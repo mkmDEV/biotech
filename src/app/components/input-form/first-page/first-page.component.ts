@@ -1,10 +1,10 @@
-import {Component, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output, TemplateRef, ViewChild} from '@angular/core';
 import {CustomerService} from '../../../services/customer.service';
 import {faMars, faVenus} from '@fortawesome/free-solid-svg-icons';
 import {Options} from 'ng5-slider';
 import {Customer} from '../../../models/customer';
 import {NgForm} from '@angular/forms';
-import {Router} from '@angular/router';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-first-page',
@@ -23,8 +23,9 @@ export class FirstPageComponent implements OnInit {
     ceil: 99,
   };
 
-  constructor(private customerService: CustomerService,
-              private router: Router) {
+  constructor(
+    private customerService: CustomerService,
+    private modalService: NgbModal) {
   }
 
   ngOnInit(): void {
@@ -41,5 +42,18 @@ export class FirstPageComponent implements OnInit {
     this.customer.gender = this.newCustomerForm.value.gender;
     this.customerService.saveCustomer(this.customer);
     this.readyForNextPage.emit();
+  }
+
+  openModal(content: TemplateRef<any>): void {
+    this.modalService.open(content, {size: 'xl'});
+  }
+
+  onReset(): void {
+    this.customerService.saveCustomer(new Customer());
+    this.modalService.dismissAll('Cross click');
+  }
+
+  onClose(): void {
+    this.modalService.dismissAll('Cross click');
   }
 }

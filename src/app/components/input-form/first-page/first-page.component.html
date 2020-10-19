@@ -35,8 +35,25 @@
     </div>
   </div>
   <div class="btn-group mt-5" role="group">
-
+    <button (click)="openModal(content)" type="button" class="btn btn-danger">Törlés</button>
     <button (click)="onSubmit()" type="button" class="btn btn-primary">Tovább</button>
   </div>
 </form>
+
+<ng-template #content>
+  <div class="modal-header vw-100">
+    <h4 class="modal-title" id="modal-basic-title">Biztosan törölni akarja az adatokat?</h4>
+  </div>
+  <div class="modal-body">
+    <p>A törlés végleges, nem visszavonható!</p>
+  </div>
+  <div class="modal-footer">
+    <button (click)="onClose()" aria-label="Close" class="btn btn-danger" type="button">
+      <span aria-hidden="true">Nem</span>
+    </button>
+    <button (click)="onReset()" aria-label="Close" class="btn btn-success" type="button">
+      <span aria-hidden="true">Igen</span>
+    </button>
+  </div>
+</ng-template>
 

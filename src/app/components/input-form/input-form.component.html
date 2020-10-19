@@ -6,11 +6,7 @@
       <app-first-page *ngIf="isFirstPage" (readyForNextPage)="onReadyForNextPage()"></app-first-page>
       <app-second-page *ngIf="!isFirstPage" (finished)="onFinished()"></app-second-page>
 
-      <div class="btn-group mt-5" role="group">
-        <button (click)="openModal(content)" class="btn btn-danger">Törlés</button>
-      </div>
-
-      <div *ngIf="!reset" class="mt-5">
+      <div *ngIf="customer.name && customer.age && customer.gender" class="mt-5">
         <h5 class="h5 mb-2">
           A te neved {{ customer.name }}, {{ customer.age }} éves vagy és {{ customer.gender ? 'férfi' : 'nő' }}.
           A testsúlyod {{ customer.weight }} kg és {{ customer.height | number: '1.0-0'}} méter magas vagy.
@@ -20,20 +16,3 @@
     </div>
   </div>
 </div>
-
-<ng-template #content>
-  <div class="modal-header vw-100">
-    <h4 class="modal-title" id="modal-basic-title">Biztosan törölni akarja az adatokat?</h4>
-  </div>
-  <div class="modal-body">
-    <p>A törlés végleges, nem visszavonható!</p>
-  </div>
-  <div class="modal-footer">
-    <button (click)="onClose()" aria-label="Close" class="btn" type="button">
-      <span aria-hidden="true">Nem</span>
-    </button>
-    <button (click)="onReset()" aria-label="Close" class="btn" type="button">
-      <span aria-hidden="true">Igen</span>
-    </button>
-  </div>
-</ng-template>
