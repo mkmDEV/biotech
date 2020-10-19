@@ -1,6 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {CustomerService} from '../../../services/customer.service';
 import {faMars, faVenus} from '@fortawesome/free-solid-svg-icons';
+import {Options} from 'ng5-slider';
+import {Customer} from '../../../models/customer';
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-first-page',
@@ -8,8 +11,15 @@ import {faMars, faVenus} from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./first-page.component.scss']
 })
 export class FirstPageComponent implements OnInit {
+  @ViewChild('form', {static: false}) newCustomerForm: NgForm;
   faMars = faMars;
   faVenus = faVenus;
+  customer = new Customer();
+  submitted = false;
+  options: Options = {
+    floor: 0,
+    ceil: 99,
+  };
 
   constructor(private customerService: CustomerService) {
   }
@@ -17,11 +27,11 @@ export class FirstPageComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  saveName(name): void {
-    this.customerService.saveCustomer(name.value);
-  }
-
-  saveAge(age): void {
-    this.customerService.saveCustomer(age.value);
+  onSubmit(): void {
+    this.submitted = true;
+    this.customer.name = this.newCustomerForm.value.name;
+    this.customer.genders = this.newCustomerForm.value.gender;
+    this.customer.age = this.newCustomerForm.value.age;
+    this.customerService.saveCustomer(this.customer);
   }
 }

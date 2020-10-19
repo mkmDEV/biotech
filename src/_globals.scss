@@ -23,7 +23,7 @@ $grid-columns: 10;
   padding: 20px 0 16px 0 !important;
   margin: 0 16px !important;
   font-size: 16px !important;
-  text-transform: uppercase!important;
+  text-transform: uppercase !important;
 }
 
 .btn-primary {
@@ -45,13 +45,14 @@ $grid-columns: 10;
 
 .btn-secondary {
   background-color: white !important;
-  color: $primary!important;
+  color: $primary !important;
   border: 2px solid $primary !important;
 
   &:hover {
     color: darken($primary, 20%) !important;
     border-color: darken($primary, 20%) !important;
   }
+
   &:active {
     color: darken($primary, 20%) !important;
     border-color: darken($primary, 30%) !important;
@@ -67,7 +68,13 @@ $grid-columns: 10;
   width: 24px;
   height: 24px;
 
-  &:not(:checked){
+  &:not(:checked) {
     color: $gray !important;
   }
+}
+
+.custom-form-control {
+  height: 56px!important;
+  padding: 10px 0!important;
+  margin: 0 16px!important;
 }

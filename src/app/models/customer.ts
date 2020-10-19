@@ -1,7 +1,7 @@
 export class Customer {
   name: string;
   age: number;
-  gender: boolean;
+  genders: boolean;
   height: number;
   weight: number;
 }

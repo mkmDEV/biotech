@@ -42,20 +42,19 @@ export class ResultComponent implements OnInit {
   }
 
   goBack(): void {
-    // this.location.back();
     // fixme
-    console.log('Salalalal');
-  }
-
-  goHome() {
-    console.log('navigate to home');
     this.router.navigateByUrl('');
   }
 
-  private getData() {
+  goHome(): void {
+    // fixme
+    this.router.navigateByUrl('');
+  }
+
+  private getData(): void {
     this.weight = this.customerService.getCustomer().weight;
     this.height = this.customerService.getCustomer().height;
-    this.gender = this.customerService.getCustomer().gender;
+    this.gender = this.customerService.getCustomer().genders;
   }
 
   private getBmiGroup(): void {
@@ -83,7 +82,5 @@ export class ResultComponent implements OnInit {
         this.bmiGroup = this.bmiGroups[5];
       }
     }
-    console.log(this.bmiNumber, this.bmiGroup);
   }
-
 }

@@ -13,6 +13,7 @@ import {FirstPageComponent} from './components/input-form/first-page/first-page.
 import {SecondPageComponent} from './components/input-form/second-page/second-page.component';
 import {ResultComponent} from './components/result/result.component';
 import {LoadingComponent} from './components/loading/loading.component';
+import {Ng5SliderModule} from 'ng5-slider';
 
 @NgModule({
   declarations: [
@@ -20,17 +21,18 @@ import {LoadingComponent} from './components/loading/loading.component';
     FirstPageComponent,
     HomeComponent,
     InputFormComponent,
+    LoadingComponent,
     SecondPageComponent,
     SplashScreenComponent,
-    ResultComponent,
-    LoadingComponent
+    ResultComponent
   ],
   imports: [
     AppRoutingModule,
     BrowserModule,
     FontAwesomeModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    Ng5SliderModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
