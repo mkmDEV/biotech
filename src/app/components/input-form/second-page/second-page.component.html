@@ -1,39 +1,72 @@
-<div class="input-group mb-3">
-  <div class="input-group-prepend">
-    <span class="input-group-text inputGroup-sizing-lg" id="customer-weight-label">Testtömeg</span>
+<form (ngSubmit)="onSubmit()" #form="ngForm">
+  <div class="col custom-form-control">
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text inputGroup-sizing-lg" id="customer-weight-label">Testtömeg</span>
+      </div>
+      <input type="number"
+             id="new-customer-weight"
+             class="form-control form-control-lg"
+             name="weight"
+             aria-label="weight"
+             aria-describedby="customer-weight-label"
+             placeholder="0"
+             min="0"
+             max="999"
+             step="1"
+             [(ngModel)]="customer.weight">
+      <div class="input-group-append">
+        <span class="input-group-text">kg</span>
+      </div>
+    </div>
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text inputGroup-sizing-lg" id="customer-height-label">Testmagasság</span>
+      </div>
+      <input type="number"
+             id="new-customer-height"
+             class="form-control form-control-lg"
+             name="height"
+             aria-label="height"
+             aria-describedby="customer-height-label"
+             placeholder="0"
+             min="0"
+             max="300"
+             step="1"
+             [(ngModel)]="customer.height">
+      <div class="input-group-append">
+        <span class="input-group-text">cm</span>
+      </div>
+    </div>
   </div>
-  <input type="number"
-         id="new-customer-weight"
-         class="form-control form-control-lg"
-         name="weight"
-         aria-label="weight"
-         aria-describedby="customer-weight-label"
-         placeholder="0"
-         min="0"
-         max="999"
-         step="1"
-         ngModel>
-  <div class="input-group-append">
-    <span class="input-group-text">kg</span>
-  </div>
+</form>
+<div class="btn-group mt-5">
+  <button (click)="openModal(content)" type="button" class="btn btn-danger">Törlés</button>
+  <button (click)="onGoBack()" type="button" class="btn btn-primary">Vissza</button>
+  <button (click)="onSubmit()" type="button" class="btn btn-success">Befejezés</button>
+</div>
+<div class="mt-5">
+  <h5 class="h5 mb-2">
+    A te neved {{ customer.name }}, {{ customer.age }} éves vagy és {{ customer.gender ? 'férfi' : 'nő' }}.
+    A testsúlyod {{ customer.weight }} kg és {{ (customer.height / 100) | number: '1.2-2'}} méter magas vagy.
+  </h5>
+  <p>Amennyiben szeretnéd megtudni a BMI értékedet, kattints a befejezés gombra.</p>
 </div>
 
-<div class="input-group mb-3">
-  <div class="input-group-prepend">
-    <span class="input-group-text inputGroup-sizing-lg" id="customer-height-label">Testmagasság</span>
+<ng-template #content>
+  <div class="modal-header vw-100">
+    <h4 class="modal-title" id="modal-basic-title">Biztosan törölni akarja az adatokat?</h4>
   </div>
-  <input type="number"
-         id="new-customer-height"
-         class="form-control form-control-lg"
-         name="height"
-         aria-label="height"
-         aria-describedby="customer-height-label"
-         placeholder="0"
-         min="0"
-         max="300"
-         step="1"
-         ngModel>
-  <div class="input-group-append">
-    <span class="input-group-text">cm</span>
+  <div class="modal-body">
+    <p>A törlés végleges, nem visszavonható!</p>
   </div>
-</div>
+  <div class="modal-footer">
+    <button (click)="onClose()" aria-label="Close" class="btn btn-danger" type="button">
+      <span aria-hidden="true">Nem</span>
+    </button>
+    <button (click)="onReset()" aria-label="Close" class="btn btn-success" type="button">
+      <span aria-hidden="true">Igen</span>
+    </button>
+  </div>
+</ng-template>

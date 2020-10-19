@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {Location} from '@angular/common';
 import {Router} from '@angular/router';
 import {CustomerService} from '../../services/customer.service';
+import {Customer} from '../../models/customer';
 
 @Component({
   selector: 'app-result',
@@ -9,9 +9,7 @@ import {CustomerService} from '../../services/customer.service';
   styleUrls: ['./result.component.scss']
 })
 export class ResultComponent implements OnInit {
-  gender: boolean;
-  height: number;
-  weight: number;
+  customer: Customer;
   bmiNumber: number;
   bmiGroup: string;
   bmiGroups = [
@@ -26,61 +24,49 @@ export class ResultComponent implements OnInit {
   ];
 
   constructor(
-    private location: Location,
     private router: Router,
     private customerService: CustomerService
   ) {
   }
 
   ngOnInit(): void {
-    this.getData();
+    this.customerService.getCustomer().subscribe((customer: Customer) => {
+      this.customer = customer;
+    });
     this.getBmiGroup();
   }
 
-  calculateBmi(): number {
-    return this.bmiNumber = this.weight / this.height ** 2;
+  calculateBmi(weight: number, height: number): number {
+    return this.bmiNumber = weight / (height * 0.01) ** 2;
   }
 
   goBack(): void {
-    // fixme tipp: session storage-ba menteni az inputokat és onnan feltölteni?
-    this.router.navigateByUrl('');
+    this.router.navigate(['']);
   }
 
   goHome(): void {
-    // fixme tipp: activated route paramba reseted=true-val, és az ngOninitben resetelje a formot mindegyik aloldalon
+    this.customerService.saveCustomer(new Customer());
     this.router.navigateByUrl('');
   }
 
-  private getData(): void {
-    this.weight = this.customerService.getCustomer().weight;
-    this.height = this.customerService.getCustomer().height;
-    this.gender = this.customerService.getCustomer().genders;
-  }
-
   private getBmiGroup(): void {
-    // fixme
-    this.calculateBmi();
-    if (this.bmiNumber < 24.99) {
-      if (this.bmiNumber < 18.49) {
-        if (this.bmiNumber < 16.99) {
-          if (this.bmiNumber < 16) {
-            this.bmiGroup = this.bmiGroups[0];
-          }
-          this.bmiGroup = this.bmiGroups[1];
-        }
-        this.bmiGroup = this.bmiGroups[2];
-      }
+    this.calculateBmi(this.customer.weight, this.customer.height);
+    if (this.bmiNumber < 16) {
+      this.bmiGroup = this.bmiGroups[0];
+    } else if (this.bmiNumber >= 16 && this.bmiNumber <= 16.99) {
+      this.bmiGroup = this.bmiGroups[1];
+    } else if (this.bmiNumber >= 17 && this.bmiNumber <= 18.49) {
+      this.bmiGroup = this.bmiGroups[2];
+    } else if (this.bmiNumber >= 18.5 && this.bmiNumber <= 24.99) {
       this.bmiGroup = this.bmiGroups[3];
+    } else if (this.bmiNumber >= 25 && this.bmiNumber <= 29.99) {
+      this.bmiGroup = this.bmiGroups[4];
+    } else if (this.bmiNumber >= 30 && this.bmiNumber <= 34.99) {
+      this.bmiGroup = this.bmiGroups[5];
+    } else if (this.bmiNumber >= 35 && this.bmiNumber <= 39.99) {
+      this.bmiGroup = this.bmiGroups[6];
     } else {
-      if (this.bmiNumber < 29.99) {
-        if (this.bmiNumber < 34.99) {
-          if (this.bmiNumber < 39.99) {
-            this.bmiGroup = this.bmiGroups[7];
-          }
-          this.bmiGroup = this.bmiGroups[6];
-        }
-        this.bmiGroup = this.bmiGroups[5];
-      }
+      this.bmiGroup = this.bmiGroups[7];
     }
   }
 }

@@ -2,41 +2,8 @@
   <h2 class="h2">Kérjük, töltse ki az alábbi mezőket!</h2>
   <div class="row justify-content-center">
     <div class="col-xl vw-100">
-
-      <app-first-page *ngIf="isFirstPage"></app-first-page>
-      <app-second-page *ngIf="!isFirstPage"></app-second-page>
-
-      <div class="btn-group mt-5" role="group">
-        <button (click)="openModal(content)" class="btn btn-danger">Törlés</button>
-        <button (click)="togglePage()" class="btn btn-primary">{{ isFirstPage ? 'Tovább' : 'Vissza' }}</button>
-        <button (click)="onSubmit()" [routerLink]="'/loading'" *ngIf="!isFirstPage"
-                class="btn btn-success"> {{ 'Befejezés' }}</button>
-      </div>
-
-      <div *ngIf="submitted && !reset" class="mt-5">
-        <h5 class="h5 mb-2">
-          A te neved {{ customer.name }}, {{ customer.age }} éves vagy és {{ customer.genders ? 'férfi' : 'nő' }}.
-          A testsúlyod {{ customer.weight }} kg és {{ customer.height | number: '1.0-0'}} méter magas vagy.
-        </h5>
-        <p>Amennyiben szeretnéd megtudni a BMI értékedet, kattints a {{ isFirstPage ? 'tovább' : 'befejezés' }}
-          gombra.</p></div>
+      <app-first-page *ngIf="isFirstPage" (readyForNextPage)="onReadyForNextPage()"></app-first-page>
+      <app-second-page *ngIf="!isFirstPage" (finished)="onFinished()" (getBack)="onGetBack()"></app-second-page>
     </div>
   </div>
 </div>
-
-<ng-template #content>
-  <div class="modal-header vw-100">
-    <h4 class="modal-title" id="modal-basic-title">Biztosan törölni akarja az adatokat?</h4>
-  </div>
-  <div class="modal-body">
-    <p>A törlés végleges, nem visszavonható!</p>
-  </div>
-  <div class="modal-footer">
-    <button (click)="onClose()" aria-label="Close" class="btn" type="button">
-      <span aria-hidden="true">Nem</span>
-    </button>
-    <button (click)="onReset(form)" aria-label="Close" class="btn" type="button">
-      <span aria-hidden="true">Igen</span>
-    </button>
-  </div>
-</ng-template>
