@@ -2,17 +2,8 @@
   <h2 class="h2">Kérjük, töltse ki az alábbi mezőket!</h2>
   <div class="row justify-content-center">
     <div class="col-xl vw-100">
-
       <app-first-page *ngIf="isFirstPage" (readyForNextPage)="onReadyForNextPage()"></app-first-page>
-      <app-second-page *ngIf="!isFirstPage" (finished)="onFinished()"></app-second-page>
-
-      <div *ngIf="customer.name && customer.age && customer.gender" class="mt-5">
-        <h5 class="h5 mb-2">
-          A te neved {{ customer.name }}, {{ customer.age }} éves vagy és {{ customer.gender ? 'férfi' : 'nő' }}.
-          A testsúlyod {{ customer.weight }} kg és {{ customer.height | number: '1.0-0'}} méter magas vagy.
-        </h5>
-        <p>Amennyiben szeretnéd megtudni a BMI értékedet, kattints a {{ isFirstPage ? 'tovább' : 'befejezés' }}
-          gombra.</p></div>
+      <app-second-page *ngIf="!isFirstPage" (finished)="onFinished()" (getBack)="onGetBack()"></app-second-page>
     </div>
   </div>
 </div>

@@ -26,15 +26,15 @@ export class InputFormComponent implements OnInit {
       });
   }
 
-  togglePage(): void {
-    this.isFirstPage = !this.isFirstPage;
-  }
-
   onReadyForNextPage(): void {
     this.isFirstPage = false;
   }
 
   onFinished(): void {
     this.router.navigate(['/loading']);
+  }
+
+  onGetBack(): void {
+    this.isFirstPage = true;
   }
 }

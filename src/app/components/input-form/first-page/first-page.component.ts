@@ -25,7 +25,8 @@ export class FirstPageComponent implements OnInit {
 
   constructor(
     private customerService: CustomerService,
-    private modalService: NgbModal) {
+    private modalService: NgbModal
+  ) {
   }
 
   ngOnInit(): void {
