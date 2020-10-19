@@ -1,0 +1,53 @@
+@import '../../../globals';
+@import url('https://fonts.googleapis.com/css?family=Pacifico&display=swap');
+
+.app-splash-screen {
+  background: $primary;
+  background: -webkit-linear-gradient(135deg, $secondary, $primary);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(135deg,  $secondary, $primary); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  opacity: 1;
+}
+
+.app-label {
+  margin-top: 32px;
+  color: white;
+  font-size: 2.5em;
+  font-family: "Pacifico", cursive;
+}
+
+.app-splash-inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.app-logo {
+  max-width: 100%;
+  background: url("~src/assets/biotech.png") no-repeat center;
+  filter: invert(100%);
+  -webkit-filter: invert(100%);
+  background-size: contain;
+  width: 100px;
+  height: 100px;
+}
+
+.app-loader {
+  max-width: 100%;
+  background: url("~src/assets/three-dots.svg") no-repeat center;
+  background-size: contain;
+  width: 80px;
+  height: 80px;
+  margin-top: 80px;
+}

@@ -1,0 +1,80 @@
+/* Pre-defined colors and units */
+
+$primary: #1BABF9;
+$secondary: #F91BAB;
+$black: #282828;
+$gray: gray;
+
+$grid-gutter-width: 1.75rem;
+$grid-columns: 10;
+
+.col-xl {
+  max-width: 1100px !important;
+}
+
+.text-primary {
+  color: $primary;
+}
+
+.btn {
+  border-radius: 0 !important;
+  height: 56px !important;
+  width: 256px !important;
+  padding: 20px 0 16px 0 !important;
+  margin: 0 16px !important;
+  font-size: 16px !important;
+  text-transform: uppercase !important;
+}
+
+.btn-primary {
+  background-color: $primary;
+
+  &:hover {
+    background: darken($primary, 20%) !important;
+  }
+
+  &:active {
+    background: darken($primary, 30%) !important;
+  }
+
+  &:disabled {
+    background: lightgray !important;
+    color: $gray !important;
+  }
+}
+
+.btn-secondary {
+  background-color: white !important;
+  color: $primary !important;
+  border: 2px solid $primary !important;
+
+  &:hover {
+    color: darken($primary, 20%) !important;
+    border-color: darken($primary, 20%) !important;
+  }
+
+  &:active {
+    color: darken($primary, 20%) !important;
+    border-color: darken($primary, 30%) !important;
+  }
+
+  &:disabled {
+    border-color: lightgray !important;
+    color: $gray !important;
+  }
+}
+
+.form-check-input {
+  width: 24px;
+  height: 24px;
+
+  &:not(:checked) {
+    color: $gray !important;
+  }
+}
+
+.custom-form-control {
+  height: 56px!important;
+  padding: 10px 0!important;
+  margin: 0 16px!important;
+}
