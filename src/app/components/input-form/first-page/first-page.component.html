@@ -2,30 +2,36 @@
   <div class="container vw-100">
     <div class="row">
       <div class="col-lg-6">
-        <div class="col custom-form-control">
+        <div>
           <input
             [(ngModel)]="customer.name"
             aria-describedby="customer-name-label"
             aria-label="given-name"
-            class="form-control"
+            class="custom-form-control form-control"
+            id="name"
             name="name"
             placeholder="Keresztnév*"
             required
             type="text"
-            #name
+            #name="ngModel"
           />
+          <div class="spacer text-danger small" *ngIf="name.invalid && name.touched">{{ errorMessage }}</div>
         </div>
-        <div class="col custom-form-control">
-          <ng5-slider
-            name="age"
-            [(ngModel)]="customer.age"
-            [(value)]="customer.age"
-            [options]="options"
-            #age
-          ></ng5-slider>
+        <div class="form-group row ml-1 mt-4">
+          <div class="custom-form-control">
+            <ng5-slider
+              name="age"
+              [(ngModel)]="customer.age"
+              [(value)]="customer.age"
+              [options]="options"
+              required
+              #age="ngModel"
+            ></ng5-slider>
+          </div>
+          <label class="col-sm-auto col-form-label">év</label>
         </div>
-        <div class="col custom-form-control">
-          <div class="form-check form-check-inline">
+        <div class="custom-form-control">
+          <div class="form-check form-check-inline mt-4">
             <input
               [(ngModel)]="customer.gender"
               [value]="true"
@@ -34,7 +40,7 @@
               name="gender"
               required
               type="radio"
-              #male
+              #male="ngModel"
             >
             <label class="form-check-label" for="male">
           <span class="text-primary">
@@ -52,7 +58,7 @@
               name="gender"
               required
               type="radio"
-              #female
+              #female="ngModel"
             >
             <label class="form-check-label" for="female">
           <span class="text-secondary">
@@ -61,8 +67,9 @@
             </label>
           </div>
         </div>
+        <div class="spacer text-danger small" *ngIf="male.invalid && male.touched">{{ errorMessage }}</div>
       </div>
-      <div class="col-lg-3 offset-1" *ngIf="!name.defaultValue && age.value && (male.checked || female.checked)">
+      <div class="col-lg-3 offset-1" *ngIf="name.valid && age.value && (male.valid || female.valid)">
         <div class="card">
           <ul class="list-group list-group-flush text-center">
             <li class="list-group-item">A te neved {{ customer.name }},</li>
@@ -73,7 +80,7 @@
           </ul>
           <div class="card-body">
             <p class="card-text">Amennyiben szeretnéd megtudni a BMI értékedet, kattints a tovább
-            gombra!</p>
+              gombra!</p>
           </div>
         </div>
       </div>
