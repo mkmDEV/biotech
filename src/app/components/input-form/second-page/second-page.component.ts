@@ -14,6 +14,7 @@ export class SecondPageComponent implements OnInit {
   @Output() finished = new EventEmitter<void>();
   @Output() getBack = new EventEmitter<void>();
   customer: Customer;
+  errorMessage = 'A mező kitöltése kötelező!';
 
   constructor(
     private customerService: CustomerService,
