@@ -22,6 +22,7 @@ export class FirstPageComponent implements OnInit {
     floor: 0,
     ceil: 99,
   };
+  errorMessage = 'A mező kitöltése kötelező!';
 
   constructor(
     private customerService: CustomerService,
