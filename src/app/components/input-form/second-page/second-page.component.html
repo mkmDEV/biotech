@@ -1,57 +1,65 @@
 <form (ngSubmit)="onSubmit()" #form="ngForm">
-  <div class="col custom-form-control">
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text inputGroup-sizing-lg" id="customer-weight-label">Testtömeg</span>
+  <div class="container vw-100">
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="form-group row">
+          <input [(ngModel)]="customer.weight"
+                 aria-describedby="customer-weight-label"
+                 aria-label="weight"
+                 class="custom-form-control form-control"
+                 id="new-customer-weight"
+                 max="999"
+                 min="0"
+                 name="weight"
+                 placeholder="0"
+                 step="1"
+                 required
+                 type="number"
+                 #weight="ngModel"
+          >
+          <div class="spacer text-danger small" *ngIf="weight.invalid && weight.touched">{{ errorMessage }}</div>
+          <label class="col-sm-auto col-form-label">kg</label>
+        </div>
+        <div class="form-group row">
+          <input [(ngModel)]="customer.height"
+                 aria-describedby="customer-height-label"
+                 aria-label="height"
+                 class="custom-form-control form-control"
+                 id="new-customer-height"
+                 max="300"
+                 min="0"
+                 name="height"
+                 placeholder="0"
+                 step="1"
+                 type="number"
+                 #height="ngModel"
+          >
+          <div class="spacer text-danger small" *ngIf="height.invalid && height.touched">{{ errorMessage }}</div>
+          <label class="col-sm-auto col-form-label">cm</label>
+        </div>
       </div>
-      <input type="number"
-             id="new-customer-weight"
-             class="form-control form-control-lg"
-             name="weight"
-             aria-label="weight"
-             aria-describedby="customer-weight-label"
-             placeholder="0"
-             min="0"
-             max="999"
-             step="1"
-             [(ngModel)]="customer.weight">
-      <div class="input-group-append">
-        <span class="input-group-text">kg</span>
-      </div>
+      <div class="col-lg-3 offset-1">
+        <div class="card">
+          <ul class="list-group list-group-flush text-center">
+            <li class="list-group-item">A te neved {{ customer.name }},</li>
+            <li class="list-group-item">{{ customer.age }} éves vagy</li>
+            <li class="list-group-item">és {{ customer.gender ? 'férfi' : 'nő' }}.</li>
+            <li class="list-group-item">A testsúlyod {{ customer.weight }} kg</li>
+            <li class="list-group-item"> és {{ (customer.height / 100) | number: '1.2-2'}} méter magas vagy.</li>
+          </ul>
+          <div class="card-body">
+            <p class="card-text">Amennyiben szeretnéd megtudni a BMI értékedet, kattints a tovább
+              gombra!</p>
+          </div>
+        </div>
     </div>
-
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text inputGroup-sizing-lg" id="customer-height-label">Testmagasság</span>
-      </div>
-      <input type="number"
-             id="new-customer-height"
-             class="form-control form-control-lg"
-             name="height"
-             aria-label="height"
-             aria-describedby="customer-height-label"
-             placeholder="0"
-             min="0"
-             max="300"
-             step="1"
-             [(ngModel)]="customer.height">
-      <div class="input-group-append">
-        <span class="input-group-text">cm</span>
-      </div>
-    </div>
+  </div>
   </div>
 </form>
 <div class="btn-group mt-5">
   <button (click)="openModal(content)" type="button" class="btn btn-danger">Törlés</button>
   <button (click)="onGoBack()" type="button" class="btn btn-primary">Vissza</button>
   <button (click)="onSubmit()" type="button" class="btn btn-success">Befejezés</button>
-</div>
-<div class="mt-5">
-  <h5 class="h5 mb-2">
-    A te neved {{ customer.name }}, {{ customer.age }} éves vagy és {{ customer.gender ? 'férfi' : 'nő' }}.
-    A testsúlyod {{ customer.weight }} kg és {{ (customer.height / 100) | number: '1.2-2'}} méter magas vagy.
-  </h5>
-  <p>Amennyiben szeretnéd megtudni a BMI értékedet, kattints a befejezés gombra.</p>
 </div>
 
 <ng-template #content>

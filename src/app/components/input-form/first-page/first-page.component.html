@@ -76,7 +76,7 @@
             <li class="list-group-item">{{ customer.age }} éves vagy</li>
             <li class="list-group-item">és {{ customer.gender ? 'férfi' : 'nő' }}.</li>
             <li class="list-group-item">A testsúlyod {{ customer.weight }} kg</li>
-            <li class="list-group-item"> és {{ customer.height | number: '1.2-2'}} méter magas vagy.</li>
+            <li class="list-group-item"> és {{  (customer.height / 100) | number: '1.2-2'}} méter magas vagy.</li>
           </ul>
           <div class="card-body">
             <p class="card-text">Amennyiben szeretnéd megtudni a BMI értékedet, kattints a tovább
